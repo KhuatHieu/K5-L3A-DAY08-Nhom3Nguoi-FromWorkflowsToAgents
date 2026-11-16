@@ -53,4 +53,8 @@ Công cụ, dùng vào việc gì, và bạn đã tự kiểm tra kết quả th
 
 ## 6. Tự đánh giá
 
-...
+- **Mức độ hoàn thành:** phần việc được giao đã xong: shape A `workflow` qua 62/62 test student; 14 test riêng nằm trong cổng host; crash suite 20/20; merge 3 shape vào `main`; benchmark 4 shape × 5 seed; ADR; `check_submission` ra 0 FAIL.
+- **Độ khó:** phần kỹ thuật của tôi không khó. Host đã lo approval, trần theo đơn và idempotency, nên workflow chỉ cần đi đúng thứ tự các bước và không tin ticket. Phần tốn công nhất là điều phối: chia việc, review và merge nhánh của các bạn, giữ cổng host xanh sau mỗi lần merge.
+- **Điều rút ra:** lab cho thấy rõ "ít tự chủ nhất mà vẫn làm được việc". Trên bộ public, ba shape nhóm viết đúng như nhau, nhưng workflow rẻ hơn orchestrator khoảng 40% và không có đường nào để chữ trong ticket đổi được quyết định. Demo `buggy_workflow` cũng cho thấy checkpoint không thay được ledger có khóa idempotency.
+- **Hạn chế:** kết luận mới dựa trên 14 claim public và MockLLM. Chưa có số hidden chính thức. Nhóm không làm bonus.
+- **Nếu làm lại:** chốt nhánh và lịch merge ngay từ CP1 để không phải chờ ở CP5.
