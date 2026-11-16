@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Khuất Duy Hiếu | 2A202603383 | hieukhuatduy@gmail.com | KhuatHieu | Nhóm trưởng, integration; shape A `workflow`; crash suite, ADR, nộp bài |
 |   2 | Lê Văn Hoàng | 2A202603357 | hoanglv2k4@gmail.com | hoanglv2k9 | Shape B `single`; benchmark, tự kiểm hidden, research card |
-|   3 |        |      |       | doanlong9304 | Shape C `orchestrator` + handoff; rà must-pass (approval, secret/PII), group report |
+|   3 | Đoàn Gia Long      | 2A202603443     |  doanlong932004@gmail.com     | doanlong9304 | Shape C `orchestrator` + handoff; rà must-pass (approval, secret/PII), group report |
 
 Gợi ý chia vai:
 
