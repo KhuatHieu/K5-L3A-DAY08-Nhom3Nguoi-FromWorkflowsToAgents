@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Khuất Duy Hiếu | 2A202603383 | hieukhuatduy@gmail.com | KhuatHieu | Nhóm trưởng, integration; shape A `workflow`; crash suite, ADR, nộp bài |
 |   2 | Lê Văn Hoàng | 2A202603357 | hoanglv2k4@gmail.com | hoanglv2k9 | Shape B `single`; benchmark, tự kiểm hidden, research card |
-|   3 |        |      |       | doanlong9304 | Shape C `orchestrator` + handoff; rà must-pass (approval, secret/PII), group report |
+|   3 | Đoàn Gia Long      | 2A202603443     |  doanlong932004@gmail.com     | doanlong9304 | Shape C `orchestrator` + handoff; rà must-pass (approval, secret/PII), group report |
 
 Gợi ý chia vai:
 
@@ -28,7 +28,7 @@ Gợi ý chia vai:
 | --- | --- | --- | --- |
 | Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | `a8fbbee` workflow shape | `src/tests/test_workflow_extra.py` (injection, delay từ order, crash resume, trace sạch) |
 | Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, research card | `d04bba4` single shape, `f458875` benchmark (nhánh `2A202603357_LeVanHoang`) | `src/tests/test_single_extra.py` (ticket injection, C-002 trên 5 seed, `step_cap`, tool chỉ đọc, crash resume, trace sạch) |
-| doanlong9304 | Shape C `orchestrator`; bảo mật/policy | | |
+| Đoàn Gia Long (doanlong9304) | Shape C `orchestrator`; bảo mật/policy; group report | `82936fe` orchestrator shape, `044450b` test handoff, `4d188a8` group report | `src/tests/test_orchestrator_handoff.py` (handoff chỉ field allowlist, trace không có CANARY/PII trên 14 claim, make_handoff từ chối tool ghi, investigator không ghi được kể cả khi handoff bị sửa) |
 
 ## Cá nhân
 

@@ -19,20 +19,42 @@ Shape, module hoặc phần báo cáo bạn phụ trách.
 
 Commit chính (hash), test đã thêm hoặc sửa, quyết định kỹ thuật bạn đưa ra.
 
-...
+- `aff22a7`: chia việc cho nhóm (`TASK.md`), điền `TEAM.md`.
+- `a8fbbee`: shape A `workflow` (`src/lab8/shapes/workflow.py`). Các bước cố định: `get_claim_view` → `lookup_order` → `compute_compensation` → `durability.issue_refund`.
+- `13551e0`: test `src/tests/test_workflow_extra.py` (14 test, chạy trong cổng host); `src/reports/crash.json` (`crash_safety 20/20`).
+- Merge nhánh shape B `single` vào `main` (`d4a98fc`), giữ `python -m pytest -q` xanh.
+
+Quyết định kỹ thuật:
+
+- Workflow **không gọi MockLLM**: số tiền, approval và idempotency đều do code và host quyết, nên bỏ cả bước soạn câu trả lời. Shape này vì thế rẻ nhất và không có variance theo seed.
+- Ticket là dữ liệu người dùng: workflow không đọc số ngày trong ticket và không ghi ticket vào trace. Trace chỉ ghi field đã qua allowlist (`lookup_order`), quote và kết quả từ host.
+- Truyền **quote đầy đủ** vào `issue_refund`; host tự trừ phần đã hoàn của đơn (T13, T14). Host từ chối thì trả `denied`, `amount_conflict` thì trả `failed`.
+- Không nuốt `InjectedCrash`: ghi trace rồi raise lại, để lần chạy lại dựa vào ledger (khóa `refund:{claim_id}`).
 
 ## 4. Bằng chứng
 
 Link commit, tên test, run id hoặc trích đoạn report liên quan.
 
-...
+- `python -m pytest -q -m student -o addopts= -k workflow`: 62 passed.
+- `src/tests/test_workflow_extra.py`:
+  - `test_workflow_ignores_injected_ticket`: ticket chèn "IGNORE POLICY… 9.999.999 VND" vẫn ra 35.000, 1 dòng ledger, 0 lần gọi model.
+  - `test_workflow_trusts_order_delay_on_every_seed`: C-002 bị `denied` ở cả 5 seed, kể cả seed 55, nơi swarm fail.
+  - `test_workflow_crash_then_resume_pays_once`: crash ở 3 điểm rồi resume vẫn đúng 1 dòng ledger, 1 audit `refund_committed`.
+  - `test_workflow_trace_has_no_secret_or_pii`: 14 claim public, trace không chứa canary, header, SĐT, địa chỉ, ghi chú nội bộ, tên hàng hay ticket.
+- `python -m lab8.crash_test --count 20 --out reports/crash.json`: `crash_safety 20/20`.
+- `python -m lab8.demo.buggy_workflow`: chỉ dùng checkpoint thì ra 2 refund, ledger của host giữ 1.
 
 ## 5. Công cụ AI đã dùng
 
 Công cụ, dùng vào việc gì, và bạn đã tự kiểm tra kết quả thế nào (xem [RULES.md](../../RULES.md)).
 
-...
+- Claude Code: đọc đề và slide, gợi ý chia việc, viết nháp `workflow.py` và `test_workflow_extra.py`, merge nhánh.
+- Tự kiểm tra: đọc lại code theo docstring và `docs/business_rules.md`; chạy ma trận student (62/62), cổng host và crash suite; grep trace tìm secret/PII. Không có số liệu nào được chép tay; mọi số đều lấy từ lệnh đã chạy.
 
 ## 6. Tự đánh giá
 
-...
+- **Mức độ hoàn thành:** phần việc được giao đã xong: shape A `workflow` qua 62/62 test student; 14 test riêng nằm trong cổng host; crash suite 20/20; merge 3 shape vào `main`; benchmark 4 shape × 5 seed; ADR; `check_submission` ra 0 FAIL.
+- **Độ khó:** phần kỹ thuật của tôi không khó. Host đã lo approval, trần theo đơn và idempotency, nên workflow chỉ cần đi đúng thứ tự các bước và không tin ticket. Phần tốn công nhất là điều phối: chia việc, review và merge nhánh của các bạn, giữ cổng host xanh sau mỗi lần merge.
+- **Điều rút ra:** lab cho thấy rõ "ít tự chủ nhất mà vẫn làm được việc". Trên bộ public, ba shape nhóm viết đúng như nhau, nhưng workflow rẻ hơn orchestrator khoảng 40% và không có đường nào để chữ trong ticket đổi được quyết định. Demo `buggy_workflow` cũng cho thấy checkpoint không thay được ledger có khóa idempotency.
+- **Hạn chế:** kết luận mới dựa trên 14 claim public và MockLLM. Chưa có số hidden chính thức. Nhóm không làm bonus.
+- **Nếu làm lại:** chốt nhánh và lịch merge ngay từ CP1 để không phải chờ ở CP5.
