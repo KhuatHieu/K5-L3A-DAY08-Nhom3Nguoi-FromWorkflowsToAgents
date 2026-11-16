@@ -29,8 +29,16 @@ ones. `lab8.trace.Trace` does this; your own tracer is fine if it matches.
 
 from __future__ import annotations
 
-from lab8.schemas import RunResult
-from lab8.shapes.common import not_implemented
+import sqlite3
+
+from lab8 import durability
+from lab8.db import connect
+from lab8.schemas import Budget, RunResult, make_run_id
+from lab8.shapes.common import finish
+from lab8.tools import compute_compensation, get_claim_view, lookup_order, tool_cost
+from lab8.trace import Trace
+
+SHAPE = "workflow"
 
 
 def run_claim(
@@ -40,7 +48,72 @@ def run_claim(
     store_path: str,
     crash_at: str | None = None,
 ) -> RunResult:
-    # TODO CP2 (student): thay stub này bằng shape workflow theo các bước ở docstring đầu file.
-    # TODO CP3 (student): truyền crash_at vào durability.issue_refund, không bắt InjectedCrash.
-    del store_path, crash_at
-    return not_implemented("workflow", claim_id, seed)
+    conn = connect(store_path)
+    try:
+        return _run(conn, claim_id, seed=seed, crash_at=crash_at)
+    finally:
+        conn.close()
+
+
+def _run(conn: sqlite3.Connection, claim_id: str, *, seed: int, crash_at: str | None) -> RunResult:
+    budget = Budget()
+    trace = Trace(make_run_id(SHAPE, claim_id, seed))
+
+    def done(status: str, proposal: int = 0, reason: str | None = None) -> RunResult:
+        trace.add("decision", {"status": status, "proposal_amount": int(proposal), "reason": reason})
+        return finish(
+            conn,
+            shape=SHAPE,
+            claim_id=claim_id,
+            seed=seed,
+            status=status,
+            proposal_amount=proposal,
+            budget=budget,
+            trace=trace,
+            error_reason=reason,
+        )
+
+    # 1. Claim through the allowlisted view. The ticket is user data: never parsed, never traced.
+    budget.add_tool(tool_cost())
+    claim = get_claim_view(conn, claim_id)
+    trace.add("get_claim_view", {"found": claim["found"], "has_order_id": bool(claim.get("order_id"))})
+    if not claim["found"]:
+        return done("failed", reason="unknown_claim")
+
+    # 2. No order -> ask for it. No ledger write.
+    if not claim["order_id"]:
+        return done("needs_info", reason="missing_order_id")
+
+    # 3. Order within the principal's scope. lookup_order already drops phone/address/item/notes.
+    budget.add_tool(tool_cost())
+    order_view = lookup_order(conn, claim["order_id"], claim["principal_id"])
+    trace.add("lookup_order", order_view)
+    if not order_view["visible"]:
+        return done("escalated", reason=order_view["reason"])
+
+    # 4. Quote in code from the order row and current policies only.
+    budget.add_tool(tool_cost())
+    quote = compute_compensation(conn, order_view["order"])
+    trace.add("quote", quote)
+    proposal = int(quote["amount_vnd"])
+
+    # 5. Nothing owed -> deny without touching the host write path.
+    if proposal <= 0:
+        return done("denied", reason=quote["reason"])
+
+    # 6. Host gate: approval, per-order cap, idempotency. Pass the FULL quote.
+    #    InjectedCrash is deliberately not caught; flush the trace and re-raise.
+    budget.add_tool(tool_cost())
+    try:
+        outcome = durability.issue_refund(conn, claim_id, proposal, crash_at=crash_at)
+    except durability.InjectedCrash:
+        trace.add("crash", {"at": crash_at})
+        trace.write()
+        raise
+    trace.add("issue_refund", {"ok": outcome["ok"], "reason": outcome["reason"], "conflict": outcome["conflict"]})
+
+    if not outcome["ok"]:
+        return done("failed" if outcome["conflict"] else "denied", proposal, outcome["reason"])
+
+    # 7. One ledger row, one refund_committed audit.
+    return done("resolved", proposal)

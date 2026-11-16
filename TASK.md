@@ -26,20 +26,20 @@ Mỗi người tự viết `report/team/<MSSV>_<HoTen>.md` của mình (đã có
 ## khuathieu (Khuất Duy Hiếu) — Shape A `workflow` + integration
 
 **CP1 (13:30–13:45)**
-- [ ] Fork hoặc tạo repo nhóm tên `K5-L3A-DAY08-<TenNhom>-FromWorkflowsToAgents`, để public hoặc mời giảng viên; mời 2 bạn vào.
-- [ ] Điền phần thông tin nhóm và bảng thành viên trong `TEAM.md`.
-- [ ] Kiểm cả 3 máy: smoke pass; `pytest -q` không có `failed`; ma trận student ra `186 failed, 62 passed`.
+- [x] Fork hoặc tạo repo nhóm tên `K5-L3A-DAY08-<TenNhom>-FromWorkflowsToAgents`, để public hoặc mời giảng viên; mời 2 bạn vào.
+- [x] Điền phần thông tin nhóm và bảng thành viên trong `TEAM.md`.
+- [ ] Kiểm cả 3 máy: smoke pass; `pytest -q` không có `failed`; ma trận student ra `186 failed, 62 passed`. _(máy khuathieu: đạt, 54 passed ở cổng host; chờ 2 máy còn lại)_
 
 **CP2 (13:45–14:30): `src/lab8/shapes/workflow.py`**
-- [ ] Đọc claim qua `get_claim_view`, thiếu `order_id` thì trả `needs_info` (không ghi ledger).
-- [ ] Gọi `lookup_order`; principal không sở hữu đơn thì trả `escalated`, không chép SĐT, địa chỉ, tên hàng hay ghi chú nội bộ.
-- [ ] Quote bằng `compute_compensation` từ **order row**, bỏ qua số ngày ghi trong ticket. Chỉ dùng policy `is_current` đã có hiệu lực.
-- [ ] Quote = 0 thì trả `denied`; quote > 0 thì gọi `durability.issue_refund` với **quote đầy đủ** (T13, T14).
-- [ ] Host từ chối (lỗi approval, đơn đã hoàn) thì trả `denied`; amount conflict thì trả `failed`. Trả kết quả bằng `finish()`, có trace ở **mọi** nhánh return.
-- [ ] `pytest -q -m student -o addopts= -k workflow` ra 62 passed.
+- [x] Đọc claim qua `get_claim_view`, thiếu `order_id` thì trả `needs_info` (không ghi ledger).
+- [x] Gọi `lookup_order`; principal không sở hữu đơn thì trả `escalated`, không chép SĐT, địa chỉ, tên hàng hay ghi chú nội bộ.
+- [x] Quote bằng `compute_compensation` từ **order row**, bỏ qua số ngày ghi trong ticket. Chỉ dùng policy `is_current` đã có hiệu lực.
+- [x] Quote = 0 thì trả `denied`; quote > 0 thì gọi `durability.issue_refund` với **quote đầy đủ** (T13, T14).
+- [x] Host từ chối (lỗi approval, đơn đã hoàn) thì trả `denied`; amount conflict thì trả `failed`. Trả kết quả bằng `finish()`, có trace ở **mọi** nhánh return.
+- [x] `pytest -q -m student -o addopts= -k workflow` ra 62 passed.
 
 **CP3 (14:30–15:15)**
-- [ ] Truyền `crash_at` vào `issue_refund`, **không** bắt `InjectedCrash`; T11 và T12 xanh.
+- [x] Truyền `crash_at` vào `issue_refund`, **không** bắt `InjectedCrash`; T11 và T12 xanh.
 - [ ] Chạy `python -m lab8.demo.buggy_workflow` để cả nhóm thấy vì sao cần ledger.
 
 **CP4–CP5 (integration)**
