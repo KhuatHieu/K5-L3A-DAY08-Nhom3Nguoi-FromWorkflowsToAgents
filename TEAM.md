@@ -27,7 +27,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | `a8fbbee` workflow shape, `13551e0` test workflow + crash suite, `8a29b91` ADR | `src/tests/test_workflow_extra.py`: `test_workflow_ignores_injected_ticket`, `test_workflow_trusts_order_delay_on_every_seed`, `test_workflow_crash_then_resume_pays_once`, `test_workflow_trace_has_no_secret_or_pii` |
-| Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, research card | `d04bba4` single shape, `f458875` benchmark (nhánh `2A202603357_LeVanHoang`) | `src/tests/test_single_extra.py` (ticket injection, C-002 trên 5 seed, `step_cap`, tool chỉ đọc, crash resume, trace sạch) |
+| Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, tự kiểm hidden, research card | `d04bba4` single shape, `f458875` test single + benchmark, `214fcbf` research card, `0b3a585` hidden selfcheck | `src/tests/test_single_extra.py`: `test_single_ignores_injected_ticket_and_counts_budget`, `test_single_trusts_order_delay_on_every_seed`, `test_single_step_cap_returns_valid_failed_result_and_trace`, `test_single_decide_uses_only_readonly_tools_and_max_steps_8`, `test_single_crash_then_resume_pays_once`, `test_single_trace_has_no_secret_or_pii` |
 | Đoàn Gia Long (doanlong9304) | Shape C `orchestrator`; bảo mật/policy; group report | `82936fe` orchestrator shape, `044450b` test handoff, `4d188a8` group report | `src/tests/test_orchestrator_handoff.py` (handoff chỉ field allowlist, trace không có CANARY/PII trên 14 claim, make_handoff từ chối tool ghi, investigator không ghi được kể cả khi handoff bị sửa) |
 
 ## Cá nhân
