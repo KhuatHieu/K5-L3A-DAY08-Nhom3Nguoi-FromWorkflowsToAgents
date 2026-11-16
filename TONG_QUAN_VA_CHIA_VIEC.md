@@ -92,7 +92,7 @@ Kiểm tra thực tế tại `c:\Users\Student\Documents\aivin\K5-L3A-DAY08-Nhom
 - **Trạng thái & Task cần làm:**
   - [x] **CP1–CP3:** Cài repo, điền `TEAM.md`, cài đặt `workflow.py` (pass 12/12 public seed 11), `crash_at` cho CP3, sinh `src/reports/crash.json` (`20/20`), viết `test_workflow_extra.py`.
   - [ ] **CP4–CP5 (Integration — chờ 2 thành viên còn lại):**
-    1. Review và merge PR từ nhánh `hoanglv2k9` (Lê Văn Hoàng) và `feat/orchestrator` (`doanlong9304`) vào `main`, đảm bảo `python -m pytest -q` xanh.
+    1. Review và merge PR từ nhánh `2A202603357_LeVanHoang` (Lê Văn Hoàng) và `2A202603443_DoanGiaLong` (`doanlong9304`) vào `main`, đảm bảo `python -m pytest -q` xanh.
     2. Cập nhật đầy đủ Họ tên, MSSV, Email, Commit hash, và tên test của `hoanglv2k9` và `doanlong9304` vào [`TEAM.md`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/TEAM.md).
     3. Sau khi có `src/reports/benchmark.json`, điền đầy đủ [`report/team/decision_adr.md`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/report/team/decision_adr.md) (chú ý giữ nguyên các dòng nhãn `- Shape chọn:`, `- Commit hash:`, `- Run id dẫn chứng:`, v.v.).
     4. Hoàn thiện mục 3, 4, 5, 6 trong [`report/team/2A202603383_KhuatDuyHieu.md`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/report/team/2A202603383_KhuatDuyHieu.md).
@@ -101,7 +101,7 @@ Kiểm tra thực tế tại `c:\Users\Student\Documents\aivin\K5-L3A-DAY08-Nhom
 ---
 
 ### 3.2. Thành viên 2 — Lê Văn Hoàng (`hoanglv2k9` · MSSV: `2A202603357`)
-- **Nhánh Git:** `hoanglv2k9` (tạo từ `main`, cùng quy ước với nhánh `khuathieu`).
+- **Nhánh Git:** `2A202603357_LeVanHoang` (tạo từ `main`).
 - **Vai trò:** **Shape B (`single.py` — ReAct)** + Đo đạc Benchmark & Hidden + `research_card.md`.
 - **File sở hữu chính:**
   - [`src/lab8/shapes/single.py`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/src/lab8/shapes/single.py)
@@ -130,12 +130,12 @@ Kiểm tra thực tế tại `c:\Users\Student\Documents\aivin\K5-L3A-DAY08-Nhom
      - Sau 16:15 (khi có `student_drop/`): tự kiểm hidden ra `reports/hidden_selfcheck.json` (không commit `student_drop/`), kiểm tra không có `status=error` hay `leak_suspect`.
      - Tổng hợp bảng `pass rate`, `pass^5`, `variance`, `cost/success` + `run_id` gửi nhóm trưởng điền vào `decision_adr.md`, giải thích vì sao `swarm` fail T02 ở seed `55`.
      - Điền đủ 7 dòng cột `Nhóm điền` và phần kết quả ablation trong [`report/team/research_card.md`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/report/team/research_card.md).
-     - Tạo báo cáo cá nhân `report/team/2A202603357_LeVanHoang.md`, push nhánh `hoanglv2k9` và mở PR vào `main`.
+     - Tạo báo cáo cá nhân `report/team/2A202603357_LeVanHoang.md`, push nhánh `2A202603357_LeVanHoang` và mở PR vào `main`.
 
 ---
 
-### 3.3. Thành viên 3 — `doanlong9304`
-- **Nhánh Git đề xuất:** `feat/orchestrator` (tạo từ `main`: `git checkout -b feat/orchestrator`).
+### 3.3. Thành viên 3 — `doanlong9304` (`2A202603443`)
+- **Nhánh Git:** `2A202603443_DoanGiaLong` (đã tạo trên remote từ `main`).
 - **Vai trò:** **Shape C (`orchestrator.py` + handoff)** + Bảo mật / Policy + Chủ bút `group_report.md`.
 - **File sở hữu chính:**
   - [`src/lab8/shapes/orchestrator.py`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/src/lab8/shapes/orchestrator.py)
@@ -161,7 +161,7 @@ Kiểm tra thực tế tại `c:\Users\Student\Documents\aivin\K5-L3A-DAY08-Nhom
      - Quét `src/traces/` và `stdout` tìm `CANARY_SECRET`, SĐT, địa chỉ, tên hàng, ghi chú nội bộ; xóa mọi `print` debug in raw row.
   5. **CP5 — Chủ bút `group_report.md` & Báo cáo cá nhân:**
      - Hoàn thiện [`report/team/group_report.md`](file:///c:/Users/Student/Documents/aivin/K5-L3A-DAY08-Nhom3Nguoi-FromWorkflowsToAgents/report/team/group_report.md) (tối đa 5 trang ngoài phụ lục), lấy số liệu từ `src/reports/benchmark.json` và `src/reports/crash.json`.
-     - Tạo báo cáo cá nhân `report/team/<MSSV>_<HoTen>.md`, push nhánh `feat/orchestrator` và mở PR vào `main`.
+     - Tạo báo cáo cá nhân `report/team/<MSSV>_<HoTen>.md`, push nhánh `2A202603443_DoanGiaLong` và mở PR vào `main`.
 
 ---
 

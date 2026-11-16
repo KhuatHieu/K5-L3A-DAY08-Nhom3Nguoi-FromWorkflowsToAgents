@@ -27,7 +27,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | `a8fbbee` workflow shape | `src/tests/test_workflow_extra.py` (injection, delay từ order, crash resume, trace sạch) |
-| Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, research card | `d04bba4` single shape, `f458875` benchmark (nhánh `hoanglv2k9`) | `src/tests/test_single_extra.py` (ticket injection, C-002 trên 5 seed, `step_cap`, tool chỉ đọc, crash resume, trace sạch) |
+| Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, research card | `d04bba4` single shape, `f458875` benchmark (nhánh `2A202603357_LeVanHoang`) | `src/tests/test_single_extra.py` (ticket injection, C-002 trên 5 seed, `step_cap`, tool chỉ đọc, crash resume, trace sạch) |
 | doanlong9304 | Shape C `orchestrator`; bảo mật/policy | | |
 
 ## Cá nhân

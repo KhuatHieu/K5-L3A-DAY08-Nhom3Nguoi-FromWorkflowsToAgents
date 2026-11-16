@@ -15,7 +15,7 @@
 
 ## 3. Đóng góp cụ thể
 
-- **Nhánh & Commit chính:** nhánh `hoanglv2k9` (tách từ `main` tại `2c278ba`): `d04bba4` (Shape B `single`), `f458875` (`test_single_extra.py` & `reports/benchmark.json`).
+- **Nhánh & Commit chính:** nhánh `2A202603357_LeVanHoang` (tách từ `main` tại `2c278ba`): `d04bba4` (Shape B `single`), `f458875` (`test_single_extra.py` & `reports/benchmark.json`).
 - **Cài đặt `src/lab8/shapes/single.py`:**
   - Dùng `lab8.runtime.run_react(..., max_steps=8, worker=True)` nên mọi tool bên trong vòng lặp đều bị ép thuộc `READONLY_TOOLS` (`get_claim_view`, `lookup_order`, `lookup_refund_history`), tuyệt đối không gọi `issue_refund`.
   - Mọi bước gọi model đều đi qua `lab8.mock_llm.complete(budget, ...)` để ghi nhận `model_calls`, token và `cost_estimate` vào `Budget`.
