@@ -52,23 +52,23 @@ Mỗi người tự viết `report/team/<MSSV>_<HoTen>.md` của mình (đã có
 ## hoanglv2k9 — Shape B `single` + benchmark
 
 **CP1**
-- [ ] Cài môi trường, đọc `docs/metrics.md`, `lab8/runtime.py` (`run_react`), `config/tools.manifest.v1.1.yaml`.
+- [x] Cài môi trường, đọc `docs/metrics.md`, `lab8/runtime.py` (`run_react`), `config/tools.manifest.v1.1.yaml`.
 
 **CP2: `src/lab8/shapes/single.py`**
-- [ ] Dùng `run_react(max_steps=8)`; `decide` chỉ được chọn **tool đọc** (`get_claim_view`, `lookup_order`, `lookup_refund_history`…), không bao giờ gọi `issue_refund`.
-- [ ] Sau vòng lặp, **code** quote bằng `compute_compensation` từ order row (không tin ticket), rồi gọi `issue_refund` với quote đầy đủ.
-- [ ] Đếm mọi lần gọi model vào `Budget` để cost so sánh được giữa các shape.
-- [ ] Có trace ở mọi nhánh, kể cả khi hết 8 bước. `-k single` ra 62 passed.
+- [x] Dùng `run_react(max_steps=8)`; `decide` chỉ được chọn **tool đọc** (`get_claim_view`, `lookup_order`, `lookup_refund_history`…), không bao giờ gọi `issue_refund`.
+- [x] Sau vòng lặp, **code** quote bằng `compute_compensation` từ order row (không tin ticket), rồi gọi `issue_refund` với quote đầy đủ.
+- [x] Đếm mọi lần gọi model vào `Budget` để cost so sánh được giữa các shape.
+- [x] Có trace ở mọi nhánh, kể cả khi hết 8 bước. `-k single` ra 62 passed.
 
 **CP3**
-- [ ] Truyền `crash_at`, không bắt `InjectedCrash`; T11 và T12 xanh.
+- [x] Truyền `crash_at`, không bắt `InjectedCrash`; T11 và T12 xanh.
 
 **CP5 (đo đạc)**
-- [ ] `python -m lab8.benchmark --shapes workflow,single,orchestrator,swarm --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/benchmark.json`
+- [x] `python -m lab8.benchmark --shapes workflow,single,orchestrator,swarm --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/benchmark.json` _(đã chạy sơ bộ khi `orchestrator` còn stub; chạy lại sau khi merge `orchestrator`)_
 - [ ] Sau 16:15: đặt `student_drop/` vào `src/` rồi chạy self-check hidden ra `reports/hidden_selfcheck.json`; kiểm không có `status=error` hay `leak_suspect`.
-- [ ] Lập bảng pass rate, pass^5, variance, cost/success cho 4 shape, kèm `run_id`. Giải thích vì sao swarm fail T02 ở seed 55.
-- [ ] Điền `research_card.md` (R1–R4, ablation); cột "Nhóm điền" không để trống.
-- [ ] Viết test: ví dụ single dừng ở bước 8 và vẫn trả status hợp lệ; hoặc ticket ghi trễ 5 ngày, order ghi 2 ngày thì phải `denied`.
+- [x] Lập bảng pass rate, pass^5, variance, cost/success cho 4 shape, kèm `run_id`. Giải thích vì sao swarm fail T02 ở seed 55. _(đã lập số liệu public cho `workflow`, `single`, `swarm`; chờ `orchestrator`)_
+- [x] Điền `research_card.md` (R1–R4, ablation); cột "Nhóm điền" không để trống.
+- [x] Viết test: ví dụ single dừng ở bước 8 và vẫn trả status hợp lệ; hoặc ticket ghi trễ 5 ngày, order ghi 2 ngày thì phải `denied`.
 
 ## doanlong9304 — Shape C `orchestrator` + bảo mật/policy
 

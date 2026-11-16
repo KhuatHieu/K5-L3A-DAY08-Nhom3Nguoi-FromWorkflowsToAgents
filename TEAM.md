@@ -12,7 +12,7 @@
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Khuất Duy Hiếu | 2A202603383 | hieukhuatduy@gmail.com | KhuatHieu | Nhóm trưởng, integration; shape A `workflow`; crash suite, ADR, nộp bài |
-|   2 |        |      |       | hoanglv2k9 | Shape B `single`; benchmark, tự kiểm hidden, research card |
+|   2 | Lê Văn Hoàng | 2A202603357 | hoanglv2k4@gmail.com | hoanglv2k9 | Shape B `single`; benchmark, tự kiểm hidden, research card |
 |   3 |        |      |       | doanlong9304 | Shape C `orchestrator` + handoff; rà must-pass (approval, secret/PII), group report |
 
 Gợi ý chia vai:
@@ -27,7 +27,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | `a8fbbee` workflow shape | `src/tests/test_workflow_extra.py` (injection, delay từ order, crash resume, trace sạch) |
-| hoanglv2k9 | Shape B `single`; benchmark | | |
+| Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, research card | `d04bba4` single shape, `f458875` benchmark (nhánh `2A202603357_LeVanHoang`) | `src/tests/test_single_extra.py` (ticket injection, C-002 trên 5 seed, `step_cap`, tool chỉ đọc, crash resume, trace sạch) |
 | doanlong9304 | Shape C `orchestrator`; bảo mật/policy | | |
 
 ## Cá nhân
