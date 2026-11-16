@@ -28,7 +28,7 @@ Gợi ý chia vai:
 | --- | --- | --- | --- |
 | Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | `a8fbbee` workflow shape | `src/tests/test_workflow_extra.py` (injection, delay từ order, crash resume, trace sạch) |
 | Lê Văn Hoàng (hoanglv2k9) | Shape B `single`; benchmark, research card | `d04bba4` single shape, `f458875` benchmark (nhánh `2A202603357_LeVanHoang`) | `src/tests/test_single_extra.py` (ticket injection, C-002 trên 5 seed, `step_cap`, tool chỉ đọc, crash resume, trace sạch) |
-| Đoàn Gia Long (doanlong9304) | Shape C `orchestrator`; bảo mật/policy; group report | `82936fe` orchestrator shape, `6a2888d` test handoff, `5c3eb55` benchmark 4 shape | `src/tests/test_orchestrator_handoff.py` (handoff chỉ field allowlist, trace không có CANARY/PII trên 14 claim, make_handoff từ chối tool ghi, investigator không ghi được kể cả khi handoff bị sửa) |
+| Đoàn Gia Long (doanlong9304) | Shape C `orchestrator`; bảo mật/policy; group report | `82936fe` orchestrator shape, `044450b` test handoff, `4d188a8` group report | `src/tests/test_orchestrator_handoff.py` (handoff chỉ field allowlist, trace không có CANARY/PII trên 14 claim, make_handoff từ chối tool ghi, investigator không ghi được kể cả khi handoff bị sửa) |
 
 ## Cá nhân
 

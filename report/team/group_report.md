@@ -6,7 +6,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 
 - Tên nhóm: Nhom3Nguoi (lớp L3A)
 - Thành viên: xem `TEAM.md` (Khuất Duy Hiếu, Lê Văn Hoàng, Đoàn Gia Long)
-- Commit chốt (trùng `report/team/decision_adr.md`): xem dòng `Commit hash` trong ADR, do nhóm trưởng chốt sau khi merge đủ 3 shape.
+- Commit chốt (trùng `report/team/decision_adr.md`): `14efe67`. Shape chọn: `workflow`.
 
 ## 2. Mục tiêu và cách tiếp cận
 
@@ -133,7 +133,7 @@ Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md`. Phi�
 
 | Vấn đề | Biểu hiện | Cách xử lý |
 | --- | --- | --- |
-| Benchmark chạy khi chưa đủ shape | Bản `benchmark.json` đầu tiên ghi orchestrator `pass_rate = 0.0` với `status failed != ...` ×70, vì lúc đó shape C còn là stub `not_implemented` | Chạy lại đúng lệnh benchmark sau khi đủ 3 shape (commit `5c3eb55`). Không sửa tay JSON |
+| Benchmark chạy khi chưa đủ shape | Bản `benchmark.json` đầu tiên ghi orchestrator `pass_rate = 0.0` với `status failed != ...` ×70, vì lúc đó shape C còn là stub `not_implemented` | Chạy lại đúng lệnh benchmark sau khi đủ 3 shape (commit `14efe67`). Không sửa tay JSON |
 | Chạy Python ngoài venv | `ModuleNotFoundError: No module named 'lab8'` | Chạy trong `src/` bằng `.venv\Scripts\python.exe` hoặc kích hoạt venv trước |
 | Data public thiếu ca approval | Chỉ có approval hết hạn (C-007); không có ca thu hồi, cấp cho claim khác, amount = 0 | Dựng thêm claim, order, approval trong DB tạm khi rà, không đụng `data/` |
 | Tên nhánh khác TASK.md | TASK.md ghi `feat/<shape>`, nhóm thực tế dùng `MSSV_HoTen` | Thống nhất theo tên `MSSV_HoTen`, mở PR vào `main` |

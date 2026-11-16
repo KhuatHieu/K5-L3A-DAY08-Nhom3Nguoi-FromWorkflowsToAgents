@@ -21,9 +21,8 @@ Shape, module hoặc phần báo cáo bạn phụ trách.
 Commit chính (hash), test đã thêm hoặc sửa, quyết định kỹ thuật bạn đưa ra.
 
 - `82936fe` feat(orchestrator): shape C (CP2, `crash_at` cho CP3).
-- `6a2888d` test(orchestrator): `src/tests/test_orchestrator_handoff.py`, 20 test (C8).
-- `5c3eb55` chore(reports): chạy lại `reports/benchmark.json` sau khi đủ 4 shape, vì bản trước ghi orchestrator 0/70 do còn là stub.
-- Viết `report/team/group_report.md` (chủ bút).
+- `044450b` test(orchestrator): `src/tests/test_orchestrator_handoff.py`, 20 test (C8).
+- `4d188a8` docs: viết `report/team/group_report.md` (chủ bút), điền bảng đóng góp và báo cáo cá nhân.
 
 Quyết định kỹ thuật:
 
@@ -51,4 +50,4 @@ Công cụ, dùng vào việc gì, và bạn đã tự kiểm tra kết quả th
 
 ## 6. Tự đánh giá
 
-...
+Em đã hoàn thành phần được giao: shape C orchestrator đạt 62/62 test student và 70/70 trên benchmark 5 seed, rà CP4 cho cả 3 shape không phát hiện rò rỉ secret hay lỗi bỏ qua approval, và viết báo cáo nhóm. Điều em học được nhiều nhất là ranh giới giữa code và model: tiền phải do code tính từ order row, còn host là nơi duy nhất được ghi, nên dù thêm agent thì độ an toàn vẫn đến từ allowlist và transaction chứ không đến từ model. Em cũng hiểu vì sao tóm tắt bằng LLM không thay được sanitize, và vì sao không được nuốt InjectedCrash khi xử lý crash. Điểm em chưa làm tốt là còn phụ thuộc nhiều vào công cụ AI khi viết code và báo cáo; em đã tự kiểm tra lại bằng test, benchmark và grep trace, nhưng cần tự tay viết nhiều hơn để nắm chắc hơn. Ngoài ra, orchestrator của em tốn chi phí cao nhất trong 3 shape vì cấp cho investigator nhiều tool hơn mức cần, nên lần sau em sẽ cân nhắc kỹ hơn giữa độ tự chủ và chi phí ngay từ lúc thiết kế.
