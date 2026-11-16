@@ -26,7 +26,7 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | | |
+| Khuất Duy Hiếu (KhuatHieu) | Nhóm trưởng; shape A `workflow` | `a8fbbee` workflow shape | `src/tests/test_workflow_extra.py` (injection, delay từ order, crash resume, trace sạch) |
 | hoanglv2k9 | Shape B `single`; benchmark | | |
 | doanlong9304 | Shape C `orchestrator`; bảo mật/policy | | |
 

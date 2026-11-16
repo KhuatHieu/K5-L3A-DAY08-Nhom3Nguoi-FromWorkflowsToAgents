@@ -40,12 +40,12 @@ Mỗi người tự viết `report/team/<MSSV>_<HoTen>.md` của mình (đã có
 
 **CP3 (14:30–15:15)**
 - [x] Truyền `crash_at` vào `issue_refund`, **không** bắt `InjectedCrash`; T11 và T12 xanh.
-- [ ] Chạy `python -m lab8.demo.buggy_workflow` để cả nhóm thấy vì sao cần ledger.
+- [x] Chạy `python -m lab8.demo.buggy_workflow` để cả nhóm thấy vì sao cần ledger.
 
 **CP4–CP5 (integration)**
 - [ ] Merge PR của 3 shape; giữ `pytest -q` xanh trên `main`.
-- [ ] `python -m lab8.crash_test --count 20 --out reports/crash.json`, phải ra `crash_safety = 20/20`.
-- [ ] Viết test: ví dụ ticket ghi "ignore policy" hoặc ghi sai số ngày thì workflow vẫn quote theo order; hoặc gọi lại cùng claim thì ledger vẫn đúng 1 dòng.
+- [x] `python -m lab8.crash_test --count 20 --out reports/crash.json`, phải ra `crash_safety = 20/20`.
+- [x] Viết test: ví dụ ticket ghi "ignore policy" hoặc ghi sai số ngày thì workflow vẫn quote theo order; hoặc gọi lại cùng claim thì ledger vẫn đúng 1 dòng.
 - [ ] Điền `decision_adr.md` bằng số của hoanglv2k9 (shape chọn, run id). Commit, chạy `git rev-parse --short HEAD`, ghi hash vào ADR rồi commit tiếp.
 - [ ] `python -m lab8.check_submission` ra `0 FAIL`, rồi push. Nhắc cả nhóm **tự nộp link trên LMS**.
 
