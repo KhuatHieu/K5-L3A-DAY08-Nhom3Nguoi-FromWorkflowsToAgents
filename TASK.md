@@ -64,9 +64,9 @@ Mỗi người tự viết `report/team/<MSSV>_<HoTen>.md` của mình (đã có
 - [x] Truyền `crash_at`, không bắt `InjectedCrash`; T11 và T12 xanh.
 
 **CP5 (đo đạc)**
-- [x] `python -m lab8.benchmark --shapes workflow,single,orchestrator,swarm --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/benchmark.json` _(đã chạy sơ bộ khi `orchestrator` còn stub; chạy lại sau khi merge `orchestrator`)_
-- [ ] Sau 16:15: đặt `student_drop/` vào `src/` rồi chạy self-check hidden ra `reports/hidden_selfcheck.json`; kiểm không có `status=error` hay `leak_suspect`.
-- [x] Lập bảng pass rate, pass^5, variance, cost/success cho 4 shape, kèm `run_id`. Giải thích vì sao swarm fail T02 ở seed 55. _(đã lập số liệu public cho `workflow`, `single`, `swarm`; chờ `orchestrator`)_
+- [x] `python -m lab8.benchmark --shapes workflow,single,orchestrator,swarm --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/benchmark.json`
+- [x] Sau 16:15: đặt `student_drop/` vào `src/` rồi chạy self-check hidden ra `reports/hidden_selfcheck.json`; kiểm không có `status=error` hay `leak_suspect`.
+- [x] Lập bảng pass rate, pass^5, variance, cost/success cho 4 shape, kèm `run_id`. Giải thích vì sao swarm fail T02 ở seed 55.
 - [x] Điền `research_card.md` (R1–R4, ablation); cột "Nhóm điền" không để trống.
 - [x] Viết test: ví dụ single dừng ở bước 8 và vẫn trả status hợp lệ; hoặc ticket ghi trễ 5 ngày, order ghi 2 ngày thì phải `denied`.
 

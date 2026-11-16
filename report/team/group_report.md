@@ -125,7 +125,15 @@ Nhóm chạy cả ba shape trên DB tạm gồm data public cộng các ca dựn
 
 ### 4.4 Tự kiểm hidden
 
-Chưa có: `student_drop/` được phát sau 16:15. Khi chạy xong, kết quả nằm ở `src/reports/hidden_selfcheck.json` và cần không có `status=error` hay `leak_suspect`.
+Nguồn: `src/reports/hidden_selfcheck.json` (chạy trên `student_drop/`, 40 hidden claim không nhãn × 5 seed = 200 trial/shape):
+
+| Shape | Trials | `error_trials` | `leak_suspect_trials` | Phân bố `status_counts` | Mean / p95 steps | Tổng cost mô phỏng (VND) |
+| --- | ---: | ---: | ---: | --- | ---: | ---: |
+| A `workflow` | 200 | 0 | 0 | `denied`: 95, `resolved`: 90, `needs_info`: 5, `escalated`: 10 | 4.53 / 5 | 7.050,0 |
+| B `single` | 200 | 0 | 0 | `denied`: 95, `resolved`: 90, `needs_info`: 5, `escalated`: 10 | 8.35 / 9 | 9.505,0 |
+| C `orchestrator` | 200 | 0 | 0 | `denied`: 95, `resolved`: 90, `needs_info`: 5, `escalated`: 10 | 4.50 / 5 | 11.928,8 |
+
+Cả ba shape đều không phát sinh `status = error`, không có `leak_suspect` (0/600 trial), đạt 100% Trace contract v1 (`reasons: {"unlabeled": 200}`), và cho cùng phân bố quyết định trên 200 trial không nhãn.
 
 Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md`. Phiếu nghiên cứu và ablation: xem `report/team/research_card.md`.
 
